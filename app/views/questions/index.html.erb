@@ -1,0 +1,12 @@
+<h1>質問BOX</h1>
+<%= link_to 'new', new_question_path, class: "btn btn-success" %>
+<% @questions.each do |q| %>
+  <div class="card mb-3, container" >
+  <div class="card-body">
+    <h5 class="card-title"><%= q.title %></h5>
+    <p class="card-subtitle mb-2 text-muted"><%= q.name %></p>
+    <p class="card-text"><%= q.content %></p>
+    <%= link_to "show", question_path(q), class:"btn btn-primary" %>
+  </div>
+  </div>
+<% end %>
