@@ -6,4 +6,7 @@ Rails.application.routes.draw do
   resources :questions do
     resources :answers
   end
+
+  get "/signup", to: "users#new"
+  post "/signup", to: "users#create"
 end
