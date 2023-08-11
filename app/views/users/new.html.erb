@@ -1,5 +1,5 @@
 <h1>会員登録</h1>
-<%= form_with model: @user, url: signup_path, local: true do |f| %>
+<%= form_with model: @user, url: signup_path, local: true, data: { turbo: false } do |f| %>
 
   <div class="form-group">
     <label>名前</label>
