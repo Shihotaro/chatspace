@@ -70,3 +70,7 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+gem 'bootstrap', '~> 5.0.2'
+gem 'jquery-rails'
+gem 'sass-rails', '>= 3.2'
