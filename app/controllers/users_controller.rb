@@ -15,4 +15,20 @@ class UsersController < ApplicationController
       render "new"
     end
   end
+
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    user_params = params.require(:user).permit(:name, :email)
+    if @user.update(user_params)
+      flash[:notice] = "更新しました"
+      redirect_to edit_user_path(@user)
+    else
+      flash.now[:alert] = "更新に失敗しました"
+      render "edit"
+    end
+  end
 end
