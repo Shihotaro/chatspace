@@ -25,6 +25,27 @@ class RecordsController < ApplicationController
     end
   end
 
+  def edit
+    @record = Record.find(params[:id])
+  end
+
+  def update
+    @record = Record.find(params[:id])
+    record_params = params.require(:record).permit(
+      :date, :body_temperature, :weight, :body_fat_percentage,
+      :condition, :memo
+    )
+    if @record.update(record_params)
+      flash[:notice] = '記録を更新しました'
+      redirect_to records_path
+    else
+      flash.now[:alert] = '記録の更新に失敗しました'
+      render 'edit'
+    end
+  end
+
+  private
+
   def set_record
     @record = Record.where(user_id: session[:user_id]).find(params[:id])
   end
