@@ -1,0 +1,28 @@
+<h1>Daily Record一覧</h1>
+
+<table class="table table-striped">
+  <tr>
+    <th>日付</th>
+    <th>基礎体温</th>
+    <th>体重</th>
+    <th>体脂肪率</th>
+    <th>体調</th>
+    <th>日記・メモ</th>
+    <th></th>
+  </tr>
+  <% @records.each do |record| %>
+  <tr>
+    <td><%= record.date %></td>
+    <td><%= record.body_temperature %>℃</td>
+    <td><%= record.weight %>KG</td>
+    <td><%= record.body_fat_percentage %>%</td>
+    <td><%= record.condition %></td>
+    <td><%= record.memo %></td>
+    <td>
+      <%= link_to "詳細", record_path(record), class: "btn btn-primary" %>
+      <%= link_to "編集", edit_record_path(record), class: "btn btn-light" %>
+      <%= link_to "削除", record_path(record),data: { turbo_method: "delete", turbo_confirm: "Are you sure?" }, class:"btn btn-danger" %>
+    </td>
+  </tr>
+  <% end %>
+</table>
