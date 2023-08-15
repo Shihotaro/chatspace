@@ -1,11 +1,12 @@
 class RecordsController < ApplicationController
+  before_action :set_record, only: [:show, :edit, :update, :destroy]
+
   def index
     @records = Record.where(user_id: session[:user_id])
     @records = @records.where(date: params[:date]) if params[:date].present?
   end
 
   def show
-    @record = Record.find(params[:id])
   end
 
   def new
@@ -30,11 +31,9 @@ class RecordsController < ApplicationController
   end
 
   def edit
-    @record = Record.find(params[:id])
   end
 
   def update
-    @record = Record.find(params[:id])
     record_params = params.require(:record).permit(
       :date, :body_temperature, :weight, :body_fat_percentage,
       :condition, :memo
@@ -49,7 +48,6 @@ class RecordsController < ApplicationController
   end
 
   def destroy
-    @record = Record.find(params[:id])
     @record.destroy
     flash[:notice] = '記録を削除しました'
     redirect_to records_path
