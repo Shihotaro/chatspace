@@ -44,6 +44,13 @@ class RecordsController < ApplicationController
     end
   end
 
+  def destroy
+    @record = Record.find(params[:id])
+    @record.destroy
+    flash[:notice] = '記録を削除しました'
+    redirect_to records_path
+  end
+
   private
 
   def set_record
