@@ -4,6 +4,10 @@ class RecordsController < ApplicationController
     @records = @records.where(date: params[:date]) if params[:date].present?
   end
 
+  def show
+    @record = Record.find(params[:id])
+  end
+
   def new
     @record = Record.new
   end

@@ -1,0 +1,28 @@
+<h1>Daily Record</h1>
+<table class="table table-striped">
+  <tr>
+    <th>日付</th>
+    <td><%= @record.date %></td>
+  </tr>
+  <tr>
+    <th>基礎体温</th>
+    <td><%= @record.body_temperature %></td>
+  </tr>
+  <tr>
+    <th>体重</th>
+    <td><%= @record.weight %></td>
+  </tr>
+  <tr>
+    <th>体脂肪率</th>
+    <td><%= @record.body_fat_percentage %></td>
+  </tr>
+  <tr>
+    <th>体調</th>
+    <td><%= @record.condition %></td>
+  </tr>
+  <tr>
+    <th>日記・メモ</th>
+    <td><%= @record.memo %></td>
+  </tr>
+</table>
+<%= link_to "戻る", records_path, class: "btn btn-secondary" %>
