@@ -1,0 +1,30 @@
+<h1>体調データの<%= type %></h1>
+<%= form_with model: record, local: true,method: method, data: { turbo: false } do |f| %>
+  <div class="form-group">
+    <label>日付</label>
+    <%= f.date_field :date, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <label>基礎体温</label>
+    <%= f.number_field :body_temperature, class: "form-control" %>℃
+  </div> 
+  <div class="form-group">
+    <label>体重</label>
+    <%= f.number_field :weight, class: "form-control" %>kg
+  </div>
+  <div class="form-group">
+    <label>体脂肪率</label>
+    <%= f.number_field :body_fat_percentage, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <label>気分</label>
+    <%= f.select :condition, [["Good!!",1],["So-so",2],["Bad..",3]], {}, { class: "form-control" } %>
+  </div> 
+  <div class="form-group"> 
+    <label>日記・メモ</label>
+    <%= f.text_field :memo, class: "form-control" %>
+  </div> 
+
+  <%= link_to "やめる", records_path, class: "btn btn-secondary" %>
+  <%= f.submit type, class: "btn btn-primary" %>
+<% end %>
