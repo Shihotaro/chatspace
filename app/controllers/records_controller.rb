@@ -1,13 +1,12 @@
 class RecordsController < ApplicationController
-  before_action :set_record, only: [:show, :edit, :update, :destroy]
+  before_action :set_record, only: %i[show edit update destroy]
 
   def index
     @records = Record.where(user_id: session[:user_id])
     @records = @records.where(date: params[:date]) if params[:date].present?
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @record = Record.new
@@ -30,8 +29,7 @@ class RecordsController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     record_params = params.require(:record).permit(
