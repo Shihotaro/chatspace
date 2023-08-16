@@ -1,3 +1,7 @@
+require 'uri'
+require 'net/http'
+require 'json'
+
 class RecordsController < ApplicationController
   before_action :set_record, only: %i[show edit update destroy]
 
@@ -6,7 +10,12 @@ class RecordsController < ApplicationController
     @records = @records.where(date: params[:date]) if params[:date].present?
   end
 
-  def show; end
+  def show
+    uri = URI("https://api.nal.usda.gov/fdc/v1/foods/list?api_key=#{ENV['API_KEY']}")
+    res = Net::HTTP.get_response(uri)
+    body = JSON.parse(res.body)
+    @food_list = body
+  end
 
   def new
     @record = Record.new

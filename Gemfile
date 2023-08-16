@@ -74,3 +74,4 @@ end
 gem 'bootstrap', '~> 5.0.2'
 gem 'jquery-rails'
 gem 'sass-rails', '>= 3.2'
+gem 'dotenv-rails'
