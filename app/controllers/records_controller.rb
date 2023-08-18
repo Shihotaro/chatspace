@@ -1,4 +1,5 @@
 class RecordsController < ApplicationController
+  before_action :redirect_to_signin
   before_action :set_record, only: %i[show edit update destroy]
 
   def index
