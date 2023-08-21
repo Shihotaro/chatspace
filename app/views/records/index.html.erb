@@ -36,9 +36,9 @@
     <td><%= record.condition %></td>
     <td><%= record.memo %></td>
     <td>
-      <%= link_to "詳細", record_path(record), class: "btn btn-primary" %>
-      <%= link_to "編集", edit_record_path(record), class: "btn btn-light" %>
-      <%= link_to "削除", record_path(record),data: { turbo_method: "delete", turbo_confirm: "Are you sure?" }, class:"btn btn-danger" %>
+      <%= link_to "詳細", record_path(record), class: "btn btn-success" %>
+      <%= link_to "編集", edit_record_path(record), class: "btn btn-success" %>
+      <%= link_to "削除", record_path(record),data: { turbo_method: "delete", turbo_confirm: "Are you sure?" }, class:"btn btn-success" %>
     </td>
   </tr>
   <% end %>

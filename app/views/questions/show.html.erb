@@ -19,7 +19,7 @@
     <%= form.text_field :content, class:"form-control" %>
   </div>
   <div>
-    <%= form.submit "投稿", class: "btn btn-primary" %>
+    <%= form.submit "投稿", class: "btn btn-success" %>
   </div>
 <% end %>
 
@@ -32,10 +32,10 @@
     <p class="card-text"><%= answer.content %></p>
     <p>回答日：<%= answer.created_at.strftime("%Y/%m/%d") %></p>
     <%= link_to "削除", [answer.question, answer],
-      data: { turbo_method: "delete", turbo_confirm: "Are you sure?" }, class:"btn btn-outline-danger" %>
+      data: { turbo_method: "delete", turbo_confirm: "Are you sure?" }, class:"btn btn-success" %>
   </div>
   </div>
   <% end %>
 <% end %>
 
-<%= link_to '一覧に戻る', questions_path, class: "btn btn-primary" %>
+<%= link_to '一覧に戻る', questions_path, class: "btn btn-success" %>
