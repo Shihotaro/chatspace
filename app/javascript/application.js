@@ -2,5 +2,8 @@
 //= require jquery3
 //= require popper
 //= require bootstrap-sprockets
+//= require script
 import "@hotwired/turbo-rails"
 import "controllers"
+import "chartkick";
+import "Chart.bundle";
