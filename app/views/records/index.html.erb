@@ -1,9 +1,9 @@
 <h1>Daily Record一覧</h1>
 <div class="chart-box">
   <div class="button-bar">
-    <button id="weight-chart" class="btn btn-success">体重</button>
-    <button id="body-temperature-chart" class="btn btn-success">体温</button>
-    <button id="body-body_fat_percentage-chart" class="btn btn-success">体脂肪率</button>
+    <button id="weight-chart" class="btn">体重</button>
+    <button id="body-temperature-chart" class="btn">体温</button>
+    <button id="body-body_fat_percentage-chart" class="btn">体脂肪率</button>
   </div>
   <div class="chart">
     <div class="weight-chart">
@@ -36,9 +36,9 @@
     <td><%= record.condition %></td>
     <td><%= record.memo %></td>
     <td>
-      <%= link_to "詳細", record_path(record), class: "btn btn-success" %>
-      <%= link_to "編集", edit_record_path(record), class: "btn btn-success" %>
-      <%= link_to "削除", record_path(record),data: { turbo_method: "delete", turbo_confirm: "Are you sure?" }, class:"btn btn-success" %>
+      <%= link_to "詳細", record_path(record), class: "btn" %>
+      <%= link_to "編集", edit_record_path(record), class: "btn" %>
+      <%= link_to "削除", record_path(record),data: { turbo_method: "delete", turbo_confirm: "Are you sure?" }, class:"btn" %>
     </td>
   </tr>
   <% end %>
