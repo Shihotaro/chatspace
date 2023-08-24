@@ -1,9 +1,14 @@
 class RecordsController < ApplicationController
+  before_action :redirect_to_signin
   before_action :set_record, only: %i[show edit update destroy]
 
   def index
-    @records = Record.where(user_id: session[:user_id])
-    @records = @records.where(date: params[:date]) if params[:date].present?
+    this_month_range = Time.current.beginning_of_month..Time.current.end_of_month
+    @records = Record.where(user_id: session[:user_id], date: this_month_range).order(:date)
+
+    @weight_data = @records.where(date: this_month_range).group_by_day(:date).average(:weight)
+    @body_temperature_data = @records.where(date: this_month_range).group_by_day(:date).average(:body_temperature)
+    @body_fat_percentage_data = @records.where(date: this_month_range).group_by_day(:date).average(:body_fat_percentage)
   end
 
   def show; end

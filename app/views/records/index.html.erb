@@ -1,5 +1,22 @@
 <h1>Daily Record一覧</h1>
-
+<div class="chart-box">
+  <div class="button-bar">
+    <button id="weight-chart" class="btn btn-success">体重</button>
+    <button id="body-temperature-chart" class="btn btn-success">体温</button>
+    <button id="body-body_fat_percentage-chart" class="btn btn-success">体脂肪率</button>
+  </div>
+  <div class="chart">
+    <div class="weight-chart">
+      <%= line_chart @weight_data, colors: ['#6d597a'] %> 
+    </div>
+    <div class="body-temperature-chart">
+      <%= line_chart @body_temperature_data, colors: ['#6d597a'] %>
+    </div>
+    <div class="body-body_fat_percentage-chart">
+      <%= line_chart @body_fat_percentage_data, colors: ['#6d597a'] %>
+    </div>
+  </div>
+</div>
 <table class="table table-striped">
   <tr>
     <th>日付</th>
