@@ -25,10 +25,10 @@ class RecordsController < ApplicationController
     record_params = params.require(:record).permit(
       :date, :body_temperature, :weight, :body_fat_percentage,
       :condition, :memo
-    )
-    record_params[:user_id] = session[:user_id]
+    ).merge(user_id: session[:user_id])
+
     @record = Record.new(record_params)
-    @record.user_id = session[:user_id]
+
     if @record.save
       flash[:notice] = '保存しました'
       redirect_to records_path

@@ -62,6 +62,10 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+
+  gem 'rubocop', require: false
+  gem 'rubocop-performance', require: false
+  gem 'rubocop-rails', require: false
 end
 
 group :test do
@@ -75,9 +79,3 @@ gem 'bootstrap', '~> 5.0.2'
 gem 'dotenv-rails'
 gem 'jquery-rails'
 gem 'sass-rails', '>= 3.2'
-
-group :development do
-  gem 'rubocop', require: false
-  gem 'rubocop-performance', require: false
-  gem 'rubocop-rails', require: false
-end
