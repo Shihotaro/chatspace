@@ -14,10 +14,10 @@ class QuestionsController < ApplicationController
   def create
     @question = Question.new(question_params)
     if @question.save
-      flash[:notice] = "質問を作成しました"
+      flash[:notice] = '質問を作成しました'
       redirect_to @question
     else
-      flash.now[:alert] = "質問の作成に失敗しました"
+      flash.now[:alert] = '質問の作成に失敗しました'
       render 'new'
     end
   end

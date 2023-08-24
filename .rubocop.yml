@@ -1,0 +1,35 @@
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Metrics/BlockLength:
+  Enabled: false
+  Exclude:
+    - "db/schema.rb"
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+  Exclude:
+    - "test/channels/application_cable/connection_test.rb"
+    - "test/test_helper.rb"
+
+Metrics/CyclomaticComplexity:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
+
+Metrics/PerceivedComplexity:
+  Enabled: false
+
+Layout/LineLength:
+  Enabled: false
+  Exclude:
+    - "bin/bundle" 
+
+Metrics/AbcSize:
+  Enabled: false
+  Exclude:
+    - "app/controllers/records_controller.rb" 
