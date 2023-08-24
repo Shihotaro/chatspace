@@ -1,13 +1,15 @@
 <h1>質問BOX</h1>
-<%= link_to 'new', new_question_path, class: "btn" %>
-<% @questions.each do |q| %>
-  <div class="card mb-3, container" >
-  <div class="card-body">
-    <h5 class="card-title"><%= q.title %></h5>
-    <p class="card-subtitle mb-2 text-muted"><%= q.name %></p>
-    <p class="card-text"><%= q.content %></p>
-    <%= link_to "show", question_path(q), class:"btn" %>
-    <%= link_to "削除", question_path(q),data: { turbo_method: "delete", turbo_confirm: "Are you sure?" }, class:"btn" %>
-  </div>
-  </div>
-<% end %>
+<div class="questions-area">
+  <%= link_to 'new', new_question_path, class: "btn" %>
+  <% @questions.each do |q| %>
+    <div class="card" >
+      <div class="card-body">
+        <h5 class="card-title"><%= q.title %></h5>
+        <p class="card-subtitle mb-2 text-muted"><%= q.name %></p>
+        <p class="card-text"><%= q.content %></p>
+        <%= link_to "show", question_path(q), class:"btn" %>
+        <%= link_to "削除", question_path(q),data: { turbo_method: "delete", turbo_confirm: "Are you sure?" }, class:"btn" %>
+      </div>
+    </div>
+  <% end %>
+</div>
