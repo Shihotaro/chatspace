@@ -1,16 +1,18 @@
-<h1>質問BOX</h1>
-<%= link_to 'new', new_question_path, class: "btn btn-success" %>
-<% @questions.each do |q| %>
-  <div class="card mb-3, container" >
-    <div class="card-body">
-      <h5 class="card-title"><%= q.title %></h5>
-      <p class="card-subtitle mb-2 text-muted"><%= q.name %></p>
-      <p class="card-text"><%= q.content %></p>
-      <%= link_to "show", question_path(q), class:"btn btn-primary" %>
-      <%= link_to "削除", question_path(q),data: { turbo_method: "delete", turbo_confirm: "Are you sure?" }, class:"btn btn-outline-danger" %>
+<h1>投稿広場</h1>
+<div class="area">
+  <%= link_to '新規投稿する', new_question_path, class: "btn btn-success" %>
+  <% @questions.each do |q| %>
+    <div class="card mb-3, container" >
+      <div class="card-body">
+        <h5 class="card-title"><%= q.title %></h5>
+        <p class="card-subtitle mb-2 text-muted"><%= q.name %></p>
+        <p class="card-text"><%= q.content %></p>
+        <%= link_to "show", question_path(q), class:"btn btn-primary" %>
+        <%= link_to "削除", question_path(q),data: { turbo_method: "delete", turbo_confirm: "Are you sure?" }, class:"btn btn-outline-danger" %>
+      </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>
 <%= form_with(url: questions_path, method: :get) do |form| %>
   <%= form.text_field :search_word, placeholder: "英表記で入力してください 例) curry", size: "40" %>
   <%= form.submit "検索" %>
