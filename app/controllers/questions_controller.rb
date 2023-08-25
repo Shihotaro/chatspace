@@ -5,7 +5,7 @@ require 'json'
 class QuestionsController < ApplicationController
   def index
     @questions = Question.all
-    if params[:search_word].present?
+    if params[:search_word].present? && params[:search_word] =~ /^[a-zA-Z]+$/
       uri = URI("https://api.nal.usda.gov/fdc/v1/foods/search?api_key=#{ENV['API_KEY']}&query=#{params[:search_word]}")
       res = Net::HTTP.get_response(uri)
       body = JSON.parse(res.body)
