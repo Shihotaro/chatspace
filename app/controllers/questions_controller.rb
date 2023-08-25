@@ -5,10 +5,14 @@ require 'json'
 class QuestionsController < ApplicationController
   def index
     @questions = Question.all
-    uri = URI("https://api.nal.usda.gov/fdc/v1/foods/search?api_key=#{ENV['API_KEY']}&query=#{params[:search_word]}")
-    res = Net::HTTP.get_response(uri)
-    body = JSON.parse(res.body)
-    @foods = body['foods']
+    if params[:search_word].present?
+      uri = URI("https://api.nal.usda.gov/fdc/v1/foods/search?api_key=#{ENV['API_KEY']}&query=#{params[:search_word]}")
+      res = Net::HTTP.get_response(uri)
+      body = JSON.parse(res.body)
+      @foods = body['foods']
+    else
+      @foods = []
+    end
   end
 
   def show

@@ -12,7 +12,23 @@
   </div>
 <% end %>
 <%= form_with(url: questions_path, method: :get) do |form| %>
-  <%= form.text_field :search_word, placeholder: "英表記で入力してください 例) tomato", size: "40" %>
+  <%= form.text_field :search_word, placeholder: "英表記で入力してください 例) curry", size: "40" %>
   <%= form.submit "検索" %>
+<% end %>
+<% if  @foods.empty? %>
+  <p class="card-text">該当データなし</p>
+<% else %>
+  <% @foods.drop(1).take(5).each do |food| %>
+    <div>
+      <h5>品目: <%= food['description'] %></h5>
+      <p>主な栄養素:</p>
+      <% food_nutrients = food['foodNutrients'] %>
+      <ul>
+        <% food_nutrients.first(3).each do |nutrient| %>
+          <li><%= "#{nutrient['nutrientName']} #{nutrient['value']} #{nutrient['unitName']}" %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 <% end %>
 
