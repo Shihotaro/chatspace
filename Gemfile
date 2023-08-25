@@ -76,6 +76,8 @@ group :test do
 end
 
 gem 'bootstrap', '~> 5.0.2'
+gem 'chartkick'
 gem 'dotenv-rails'
+gem 'groupdate'
 gem 'jquery-rails'
 gem 'sass-rails', '>= 3.2'
