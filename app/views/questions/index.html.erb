@@ -1,5 +1,5 @@
 <h1>投稿広場</h1>
-<div class="area">
+<div class="questions-area">
   <%= link_to '新規投稿する', new_question_path, class: "btn btn-success" %>
   <% @questions.each do |q| %>
     <div class="card mb-3, container" >
@@ -13,24 +13,35 @@
     </div>
   <% end %>
 </div>
-<%= form_with(url: questions_path, method: :get) do |form| %>
-  <%= form.text_field :search_word, placeholder: "英表記で入力してください 例) curry", size: "40" %>
-  <%= form.submit "検索" %>
-<% end %>
-<% if  @foods.empty? %>
-  <p class="card-text">該当データなし</p>
-<% else %>
-  <% @foods.drop(1).take(5).each do |food| %>
-    <div>
-      <h5>品目: <%= food['description'] %></h5>
-      <p>主な栄養素:</p>
-      <% food_nutrients = food['foodNutrients'] %>
-      <ul>
-        <% food_nutrients.first(3).each do |nutrient| %>
-          <li><%= "#{nutrient['nutrientName']} #{nutrient['value']} #{nutrient['unitName']}" %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-<% end %>
-
+<div class="search-area">
+  <h1>栄養成分を調べる</h1>
+  <p>気になる食品の名前を英表記で入力してください。</p>
+  <p>
+    ※ごめんなさい、、、。<br>
+    該当がない場合は、「該当データなし」が表示されます。
+  </p>
+  <div class="search-field">
+    <%= form_with(url: questions_path, method: :get) do |form| %>
+      <%= form.text_field :search_word, placeholder: "英表記で入力してください 例) curry", size: "40" %>
+      <%= form.submit "検索", class:"btn" %>
+    <% end %>
+  </div>
+  <div class="search-results">
+    <% if  @foods.empty? %>
+      <p class="card-text no-date">該当データなし</p>
+    <% else %>
+      <% @foods.drop(1).take(5).each do |food| %>
+        <div>
+          <h5>品目: <%= food['description'] %></h5>
+          <p>主な栄養素:</p>
+          <% food_nutrients = food['foodNutrients'] %>
+          <ul>
+            <% food_nutrients.first(3).each do |nutrient| %>
+              <li><%= "#{nutrient['nutrientName']} #{nutrient['value']} #{nutrient['unitName']}" %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
