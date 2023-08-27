@@ -13,7 +13,7 @@
     
     <div class="form-group">
       <%= f.label :content %>
-      <%= f.text_area :content, class:"form-control", size: "20x10"  %>
+      <%= f.text_area :simple_format(h(content)), class:"form-control", size: "20x10"  %>
     </div>
 
     <%= f.submit "投稿", class: "btn" %>
