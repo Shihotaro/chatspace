@@ -118,3 +118,25 @@ td {
 .search-subtitle {
   font-size: 20px;
 }
+
+.show-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.coment-area {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.comenter-name,
+.coment-input,
+.coment-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+}
