@@ -1,13 +1,14 @@
 <h1>会員情報更新</h1>
-<%= form_with model: @user, url: user_path, method: "patch", local: true, data: { turbo: false }  do |f| %>
-
-  <div class="form-group">
+<%= form_with model: @user, url: user_path, method: "patch", class: "user-update", local: true, data: { turbo: false }  do |f| %>
+  <div class="form-group update-name">
     <label>名前</label>
-    <%= f.text_field :name, class: "form-control" %>
+    <%= f.text_field :name, class: "form-control", size: 50 %>
   </div>
-  <div class="form-group">
+  <div class="form-group update-email">
     <label>メールアドレス</label>
-    <%= f.text_field :email, class: "form-control" %>
+    <%= f.text_field :email, class: "form-control", size: 50 %>
   </div>
-  <%= f.submit "更新", class: "btn"%>
+  <div>
+    <%= f.submit "更新", class: "btn"%>
+  </div>
 <% end %>
