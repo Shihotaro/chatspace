@@ -11,15 +11,15 @@
   </head>
 
   <body>
-  <nav class="navbar navbar-light bg-light">
+  <nav class="navbar navbar-light">
     <div class="navbar-brand">ヘルスアプリ</div>
     <div>
       <% if session[:user_id].present? %>
-        <%= link_to "記録作成", new_record_path, class: "btn btn-success" %>
-        <%= link_to "登録内容の更新", edit_user_path, class: "btn btn-outline-info"%>
-        <%= link_to "ログアウト", logout_path, class: "btn btn-outline-secondary" %>
+        <%= link_to "記録作成", new_record_path, class: "btn" %>
+        <%= link_to "登録内容の更新", edit_user_path, class: "btn"%>
+        <%= link_to "ログアウト", logout_path, class: "btn" %>
       <% else %>
-        <%= link_to "会員登録", signup_path, class: "btn btn-outline-primary"%>
+        <%= link_to "会員登録", signup_path, class: "btn"%>
       <% end %>
     </div>
   </nav>
@@ -29,7 +29,6 @@
         <%= flash[:notice] %>
       </div>
     <% end %>
-
     <% if flash[:alert] %>
       <div class="alert alert-danger" role="alert">
         <%= flash[:alert] %>

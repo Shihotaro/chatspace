@@ -1,21 +1,21 @@
-<h1>New Question</h1>
-<div class="container">
-  <%= form_with model: @question, local: true, data: { turbo: false } do |f| %>
-    <div class="form-group">
+<h1>質問の新規作成</h1>
+<h2>気になることや不安なこと、なんでも聞いてみよう</h2>
+<div class="container question-input">
+  <%= form_with model: @question, local: true,class:"container", data: { turbo: false } do |f| %>
+    <div class="form-group question-title">
       <%= f.label :title %>
       <%= f.text_field :title, class:"form-control" %>
     </div>
-
-    <div class="form-group">
+    <div class="form-group question-name">
       <%= f.label :name %>
-      <%= f.text_field :name, class:"form-control"  %>
+      <%= f.text_field :name, class:"form-control" %>
     </div>
-    
-    <div class="form-group">
+    <div class="form-group question-content">
       <%= f.label :content %>
-      <%= f.text_area :content, class:"form-control", size: "20x10"  %>
+      <%= f.text_area :content, class:"form-control", size: "20x10" %>
     </div>
-
-    <%= f.submit "投稿", class: "btn btn-primary" %>
+    <div class="question-submit">
+     <%= f.submit "投稿", class: "btn" %>
+    </div>
   <% end %>
 </div>

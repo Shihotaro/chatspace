@@ -12,3 +12,187 @@
  *
  */
 @import "bootstrap";
+
+body {
+  background-color: #fcd5ce;
+  color: #6d6875;
+}
+
+.btn {
+  color: #b5838d;
+  background-color: white;
+  border-color: #b5838d;
+}
+
+.btn:hover {
+  color: white;
+  background-color: #b5838d;
+  border-color: white;
+}
+
+h1,
+h2 {
+  display: flex;
+  justify-content: center;
+  color: #6d6875;
+}
+
+.chart {
+  background-color: white;
+  margin: 25px 100px;
+}
+
+.button-bar {
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+}
+
+button {
+  margin: 3px;
+}
+
+table th:first-child {
+  border-radius: 10px 0 0 0;
+}
+
+table th:last-child {
+  border-radius: 0 10px 0 0;
+}
+
+table tr:last-child td:first-child {
+  border-radius: 0 0 0 10px;
+}
+
+table tr:last-child td:last-child {
+  border-radius: 0 0 10px 0;
+}
+
+th,
+td {
+  text-align: center;
+}
+
+.alert {
+  text-align: center;
+  width: 50%;
+}
+
+.questions-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card {
+  width: 70%;
+  padding: 30px;
+  margin: 10px;
+  border-radius: 10px;
+}
+
+.form-control {
+  width: 70%;
+}
+
+.questions-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.search-area {
+  margin: 30px 150px;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 5px solid white;
+  border-radius: 10px;
+}
+
+.no-date {
+  padding: 50px;
+}
+
+.search-subtitle {
+  font-size: 20px;
+}
+
+.show-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.coment-area {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.comenter-name,
+.coment-input,
+.coment-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+}
+
+.question-title,
+.question-name,
+.question-content,
+.question-submit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+}
+
+.field_with_errors {
+  display: contents;
+}
+
+.record-input {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+}
+
+.bottom-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-form,
+.login-email,
+.login-password {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+}
+
+.user-form,
+.user-name,
+.user-email,
+.user-password,
+.user-password-confirmation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+}
+
+.user-update,
+.update-name,
+.update-email {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+}
