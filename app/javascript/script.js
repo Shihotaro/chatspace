@@ -1,4 +1,4 @@
-$(document).ready(function () {
+document.addEventListener("turbo:load", () => {
   $(".body-temperature-chart").hide();
   $(".body-body_fat_percentage-chart").hide();
 
