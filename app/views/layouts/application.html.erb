@@ -9,11 +9,14 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-
   <body>
   <nav class="navbar navbar-light">
     <div class="navbar-brand">
+      <% if session[:user_id].present? %>
+      <%= link_to "みんなの広場", records_path, class: "brand-name" %>
+      <% else %>
       <%= link_to "みんなの広場", questions_path, class: "brand-name" %>
+      <% end %>
     </div>
     <div>
       <%= link_to "Q&A", questions_path, class: "btn" %>
