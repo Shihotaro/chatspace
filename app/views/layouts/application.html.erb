@@ -14,11 +14,13 @@
   <nav class="navbar navbar-light">
     <div class="navbar-brand">ヘルスアプリ</div>
     <div>
+      <%= link_to "Q&A", questions_path, class: "btn" %>
       <% if session[:user_id].present? %>
         <%= link_to "記録作成", new_record_path, class: "btn" %>
         <%= link_to "登録内容の更新", edit_user_path, class: "btn"%>
         <%= link_to "ログアウト", logout_path, class: "btn" %>
       <% else %>
+        <%= link_to "ログイン", login_path, class: "btn"%>
         <%= link_to "会員登録", signup_path, class: "btn"%>
       <% end %>
     </div>
