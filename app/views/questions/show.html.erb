@@ -8,7 +8,13 @@
       <p>投稿日：<%= @question.created_at.strftime("%Y/%m/%d") %></p>
     </div>
   </div>
-  <h2>コメントする</h2>
+  <h2 class="coment-title">コメントする</h2>
+    <h5>
+    <ul>
+      <li>あなたが言われて傷つくことは禁止です</li>
+      <li>Q&A以外の内容は禁止です</li>
+    <ul>
+  </h5>
   <div class="coment-area">
     <%= form_with model: [@question, @question.answers.build], class:"container" do |form| %>
       <div class="form-group comenter-name">
@@ -25,7 +31,7 @@
       </div>
     <% end %>
   </div>
-  <h2>コメント一覧</h2>
+  <h2 class="coment-index">コメント一覧</h2>
   <% @question.answers.each do |answer| %>
     <% if answer.name.present? && answer.content.present? %>
     <div class="card mb-3, container" >
