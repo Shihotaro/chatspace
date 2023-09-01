@@ -1,4 +1,4 @@
-<h1>体調データの<%= type %></h1>
+<h1>体調記録の<%= type %></h1>
 <%= form_with model: record, local: true,method: method, class: "record-form", data: { turbo: false } do |f| %>
   <div class="form-group record-input">
     <label>日付</label>
@@ -25,7 +25,7 @@
     <%= f.text_area :memo, class: "form-control", size: "20x10" %>
   </div> 
   <div class="bottom-button">
-    <%= link_to "やめる", records_path, class: "btn" %>
+    <%= link_to "戻る", 'javascript:history.back()', class: "btn" %>
     <%= f.submit type, class: "btn" %>
   </div>
 <% end %>
