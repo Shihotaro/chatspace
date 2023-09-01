@@ -17,7 +17,7 @@
     <%= f.password_field :password_confirmation, class: "form-control", size:50 %>
   </div>
   <div>
-    <%= link_to "戻る", login_path, class: "btn" %>
+    <%= link_to "戻る", 'javascript:history.back()', class: "btn" %>
     <%= f.submit "登録", class: "btn"%>
   </div>
 <% end %>

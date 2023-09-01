@@ -15,6 +15,7 @@
       <%= f.text_area :content, class:"form-control", size: "20x10" %>
     </div>
     <div class="question-submit">
+      <%= link_to "戻る", 'javascript:history.back()', class: "btn" %>
      <%= f.submit "投稿", class: "btn" %>
     </div>
   <% end %>
