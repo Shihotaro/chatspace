@@ -25,6 +25,13 @@ jobs:
     steps:
       - name: test steps
         run: echo "Hello world"
+
+      - name: check current directory
+        run: ls -al
+
+      - name: build container
+        run: docker build -t chatspace-app:v0.0.1 .
+
     #   - uses: actions/checkout@v3
 
     #   - name: Build an Image and Run Tests
