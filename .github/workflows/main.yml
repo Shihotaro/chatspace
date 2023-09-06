@@ -71,7 +71,7 @@ jobs:
         with:
           task-definition: ${{ env.ECS_TASK_DEFINITION }}
           container-name: app
-          image: ${{ steps.login-ecr.outputs.registry }}/${{ secrets.AWS_ECR_WEB_SERVER_REPOSITORY }}
+          image: ${{ steps.login-ecr.outputs.registry }}/${{ secrets.AWS_ECR_APP_SERVER_REPOSITORY }}:latest
 
       - name: Deploy Amazon ECS task definition
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
@@ -80,6 +80,8 @@ jobs:
           service: ${{ env.ECS_SERVICE }}
           cluster: ${{ env.ECS_CLUSTER }}
           wait-for-service-stability: true
+
+
 # name: Deploy CI/CD
 
 # on:
