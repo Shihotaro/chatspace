@@ -7,6 +7,11 @@ class QuestionsController < ApplicationController
     @questions = Question.all
     if params[:search_word].present? && params[:search_word] =~ /^[a-zA-Z]+$/
       uri = URI("https://api.nal.usda.gov/fdc/v1/foods/search?api_key=#{ENV['API_KEY']}&query=#{params[:search_word]}")
+      puts "-------------------------------"
+      puts uri
+      puts ENV['API_KEY']
+      puts "-------------------------------"
+
       res = Net::HTTP.get_response(uri)
       body = JSON.parse(res.body)
       @foods = body['foods']
