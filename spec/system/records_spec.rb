@@ -9,13 +9,13 @@ RSpec.describe 'Records', type: :system do
     visit login_path
     fill_in 'email', with: user.email
     fill_in 'password', with: user.password
-    click_on 'ログイン'
+    click_on 'ログイン', class: 'login'
 
     # record一覧画面からrecordの新規登録
     expect(current_path).to eq(records_path)
     click_on '記録作成'
 
-    fill_in 'record[date]', with: '2023-08-30'
+    fill_in 'record[date]', with: '2023-09-01'
     fill_in 'record[body_temperature]', with: 36
     fill_in 'record[weight]', with: 45
     fill_in 'record[body_fat_percentage]', with: 15
@@ -24,6 +24,6 @@ RSpec.describe 'Records', type: :system do
     click_on '登録'
 
     expect(current_path).to eq(records_path)
-    expect(page).to have_content '2023-08-30'
+    expect(page).to have_content '2023-09-01'
   end
 end
