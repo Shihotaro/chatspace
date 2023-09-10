@@ -12,7 +12,9 @@
         <p class="card-subtitle mb-2 text-muted"><%= q.name %></p>
         <p class="card-text"><%= simple_format(h(q.content)) %></p>
         <%= link_to "詳細", question_path(q), class:"btn" %>
-        <%= link_to "削除", question_path(q),data: { turbo_method: "delete", turbo_confirm: "Are you sure?" }, class:"btn" %>
+        <% if session[:user_id] == 1 %>
+          <%= link_to "削除", question_path(q),data: { turbo_method: "delete", turbo_confirm: "Are you sure?" }, class:"btn" %>
+        <% end %>
       </div>
     </div>
   <% end %>
