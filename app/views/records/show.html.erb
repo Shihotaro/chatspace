@@ -22,7 +22,9 @@
   </tr>
   <tr>
     <th>日記・メモ</th>
-    <td><%= @record.memo %></td>
+    <td><%= simple_format(h(@record.memo)) %></td>
   </tr>
 </table>
-<%= link_to "戻る", 'javascript:history.back()', class: "btn" %>
+<div class="back-button">
+  <%= link_to "戻る", 'javascript:history.back()', class: "btn" %>
+</div>
