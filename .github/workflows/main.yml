@@ -2,7 +2,7 @@ name: Deploy Simple CI/CD
 
 on:
   push:
-    branches: ["feature/add-sample-data"]
+    branches: ["main"]
 
 env:
   AWS_REGION: ap-northeast-1
