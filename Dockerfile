@@ -14,5 +14,6 @@ COPY . /app
 EXPOSE 3000
 
 RUN rails db:migrate RAILS_ENV=development
+RUN rails db:seed
 
 CMD ["rails", "server", "-b", "0.0.0.0"]
