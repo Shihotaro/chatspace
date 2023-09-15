@@ -3,6 +3,12 @@
   治療のことやあなたの気持ち、聞きたいこと、話したいことなんでも話しましょう
 </h5>
 <h1>投稿広場</h1>
+<div class="question-search-area">
+  <form method="get" action="<%= questions_path %>">
+    <input type="text" name="search" placeholder="キーワード検索" class="question-search-input">
+    <input type="submit" value="検索" class="search-button">
+  </form>
+</div>
 <div class="questions-area">
   <%= link_to '新規投稿する', new_question_path, class: "btn btn-success" %>
   <% @questions.each do |q| %>
