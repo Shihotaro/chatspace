@@ -20,10 +20,14 @@
         <div class="question-select-bar">
           <%= link_to "詳細", question_path(q), class:"btn" %>
           <% if current_user.already_favorited?(q) %>
-            <%= link_to "いいねを外す", question_favorites_path(q), data: { "turbo-method": :delete }, class: "non-like-button" %>
-            <span class="nonlike-count"><%= q.favorites.count %></span>
+            <%= link_to question_favorites_path(q), data: { "turbo-method": :delete }, class: "non-like-button" do %>
+              <i class="fa-regular fa-heart" style="color: #b5838d;"></i>
+            <% end %>
+            <span class="non-like-count"><%= q.favorites.count %></span>
           <% else %>
-            <%= link_to "いいね", question_favorites_path(q), data: { "turbo-method": :post }, class: "like-button" %>
+            <%= link_to question_favorites_path(q), data: { "turbo-method": :post }, class: "like-button" do %>
+              <i class="fas fa-heart" style="color: #b5838d;"></i>
+            <% end %>
             <span class="like-count"><%= q.favorites.count %></span>
           <% end %>
           <% if session[:user_id] == 1 %>
