@@ -1,7 +1,7 @@
 class FavoritesController < ApplicationController
   def create
     @favorite = current_user.favorites.create(question_id: params[:question_id])
-    redirect_to questions_path
+    redirect_back(fallback_location: root_path)
   end
 
   def destroy
