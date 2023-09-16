@@ -260,3 +260,26 @@ td {
   display: flex;
   justify-content: center;
 }
+
+.non-like-button,
+.like-button {
+  text-decoration: none;
+  color: #6d6875;
+  margin: 5px;
+}
+
+.non-like-button:hover,
+.like-button:hover {
+  color: #b5838d;
+}
+
+.like-count {
+  color: #6d6875;
+  margin: 5px;
+}
+
+.question-select-bar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
