@@ -17,10 +17,22 @@
         <h5 class="card-title"><%= q.title %></h5>
         <p class="card-subtitle mb-2 text-muted"><%= q.name %></p>
         <p class="card-text"><%= simple_format(h(q.content)) %></p>
-        <%= link_to "詳細", question_path(q), class:"btn" %>
-        <% if session[:user_id] == 1 %>
-          <%= link_to "削除", question_path(q),data: { turbo_method: "delete", turbo_confirm: "Are you sure?" }, class:"btn" %>
-        <% end %>
+        <div class="question-select-bar">
+          <%= link_to "詳細", question_path(q), class:"btn" %>
+          <% if current_user && current_user.already_favorited?(q) %>
+            <%= link_to question_favorites_path(q), data: { "turbo-method": :delete }, class: "non-like-button" do %>
+              <i class="fa-regular fa-heart" style="color: #b5838d;"></i>
+            <% end %>
+          <% else %>
+            <%= link_to question_favorites_path(q), data: { "turbo-method": :post }, class: "like-button" do %>
+              <i class="fas fa-heart" style="color: #b5838d;"></i>
+            <% end %>
+          <% end %>
+          <span class="like-count"><%= q.favorites.count %></span>
+          <% if session[:user_id] == 1 %>
+            <%= link_to "削除", question_path(q),data: { turbo_method: "delete", turbo_confirm: "Are you sure?" }, class:"btn" %>
+          <% end %>
+        </div>
       </div>
     </div>
   <% end %>

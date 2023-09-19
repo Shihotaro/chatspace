@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root 'questions#index'
 
   resources :questions do
+    resource :favorites, only: [:create, :destroy]
     resources :answers
   end
 
