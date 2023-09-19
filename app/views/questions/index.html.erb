@@ -19,7 +19,7 @@
         <p class="card-text"><%= simple_format(h(q.content)) %></p>
         <div class="question-select-bar">
           <%= link_to "詳細", question_path(q), class:"btn" %>
-          <% if current_user.already_favorited?(q) %>
+          <% if current_user && current_user.already_favorited?(q) %>
             <%= link_to question_favorites_path(q), data: { "turbo-method": :delete }, class: "non-like-button" do %>
               <i class="fa-regular fa-heart" style="color: #b5838d;"></i>
             <% end %>
