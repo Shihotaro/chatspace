@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_230_920_113_839) do
+ActiveRecord::Schema[7.0].define(version: 20_230_920_140_602) do
   create_table 'answers', force: :cascade do |t|
     t.string 'name'
     t.text 'content'
@@ -46,6 +46,8 @@ ActiveRecord::Schema[7.0].define(version: 20_230_920_113_839) do
     t.text 'content'
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
+    t.integer 'user_id'
+    t.index ['user_id'], name: 'index_questions_on_user_id'
   end
 
   create_table 'records', force: :cascade do |t|
