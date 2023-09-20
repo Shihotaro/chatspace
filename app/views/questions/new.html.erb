@@ -14,6 +14,10 @@
       <%= f.label :content %>
       <%= f.text_area :content, class:"form-control", size: "20x10" %>
     </div>
+    <div class="form-group question-tag">
+      <%= label_tag :tag_names, 'Tag (「,」で区切ると複数登録できます)' %>
+      <%= text_field_tag :tag_names %>
+    </div>
     <div class="question-submit">
       <%= link_to "戻る", 'javascript:history.back()', class: "btn" %>
      <%= f.submit "投稿", class: "btn" %>

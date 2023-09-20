@@ -5,6 +5,13 @@
       <h5 class="card-title"><%= @question.title %></h5>
       <p class="card-subtitle mb-2 text-muted"><%= @question.name %></p>
       <p class="card-text"><%= simple_format(h(@question.content)) %></p>
+      <% if @question.tags.exists?%>
+        <p>タグ：
+          <% @question.tags.each do |tag| %>
+            <%= tag.name %>
+          <% end %>
+        </p>
+      <% end %>
       <div class="question-detail-bottom">
         <% if current_user.already_favorited?(@question)%>
           <%= link_to question_favorites_path(@question), data: { "turbo-method": :delete }, class: "non-like-button" do %>

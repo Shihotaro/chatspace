@@ -7,7 +7,7 @@ class QuestionsController < ApplicationController
     @questions = if params[:search].present?
                    Question.where('title LIKE ? OR content LIKE ?', "%#{params[:search]}%", "%#{params[:search]}%")
                  else
-                   Question.all
+                   Question.includes(:tags).all
                  end
 
     if params[:search_word].present? && params[:search_word] =~ /^[a-zA-Z]+$/
@@ -21,7 +21,7 @@ class QuestionsController < ApplicationController
   end
 
   def show
-    @question = Question.find(params[:id])
+    @question = Question.includes(:tags).find(params[:id])
   end
 
   def new
@@ -30,7 +30,11 @@ class QuestionsController < ApplicationController
 
   def create
     @question = Question.new(question_params)
+    @question.user_id = session[:user_id]
+
+    tag_list = params[:tag_names].split(',')
     if @question.save
+      @question.save_tags(tag_list)
       flash[:notice] = '質問を作成しました'
       redirect_to @question
     else

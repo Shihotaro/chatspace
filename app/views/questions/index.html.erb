@@ -17,6 +17,13 @@
         <h5 class="card-title"><%= q.title %></h5>
         <p class="card-subtitle mb-2 text-muted"><%= q.name %></p>
         <p class="card-text"><%= simple_format(h(q.content)) %></p>
+        <% if q.tags.exists?%>
+          <p>タグ：
+            <% q.tags.each do |tag| %>
+              <%= tag.name %>
+            <% end %>
+          </p>
+        <% end %>
         <div class="question-select-bar">
           <%= link_to "詳細", question_path(q), class:"btn" %>
           <% if current_user && current_user.already_favorited?(q) %>

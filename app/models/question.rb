@@ -9,4 +9,11 @@ class Question < ApplicationRecord
   validates :title, presence: true, length: { maximum: 30 }
   validates :name, presence: true
   validates :content, presence: true, length: { minimum: 5 }
+
+  def save_tags(tags)
+    tags.each do |name|
+      tag = Tag.find_or_create_by(name: name)
+      self.tags << tag
+    end
+  end
 end
