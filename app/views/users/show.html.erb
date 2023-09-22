@@ -1,0 +1,28 @@
+<h1><%= current_user.name %>さんのマイページ</h1>
+<h2>投稿した質問</h2>
+<div>
+  <%= @questions.count %>件
+</div>
+<div>
+  <% @questions.each do |question| %>
+    <h3><%= link_to question.title, question_path(question) %></h3>
+    <p><%= simple_format(h(question.content)) %></p>
+    <%= link_to "削除", question_path(question), data: { turbo_method: "delete", turbo_confirm: "本当に削除しますか？" }, class:"btn" %>
+  <% end %>
+</div>
+<h2>お気に入り一覧</h2>
+<div>
+  <%= @favorites.count %>件
+</div>
+<div>
+  <% @favorites.each do |favorite| %>
+    <h3><%= link_to favorite.question.title, question_path(favorite.question) %></h3>
+    <p><%= simple_format(h(favorite.question.content)) %></p>
+    <%= link_to question_favorites_path(favorite.question), data: { "turbo-method": :delete }, class: "non-like-button" do %>
+      <i class="fa-regular fa-heart" style="color: #b5838d;"></i>
+    <% end %>
+    <span class="like-count">
+      <%= favorite.question.favorites.count %>
+    </span>
+  <% end %>
+</div>
