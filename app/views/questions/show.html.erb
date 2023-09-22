@@ -14,7 +14,7 @@
         </p>
       <% end %>
       <div class="question-detail-bottom">
-        <% if current_user.already_favorited?(@question)%>
+        <% if current_user && current_user.already_favorited?(@question)%>
           <%= link_to question_favorites_path(@question), data: { "turbo-method": :delete }, class: "non-like-button" do %>
             <i class="fa-regular fa-heart" style="color: #b5838d;"></i>
           <% end %>
