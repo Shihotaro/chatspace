@@ -26,3 +26,9 @@
     </span>
   <% end %>
 </div>
+<h2>登録情報の編集</h2>
+<div>
+  <p>名前：<%= current_user.name %></p>
+  <p>メールアドレス：<%= secret_email(current_user.email) %></p>
+  <%= link_to "編集", edit_user_path, class:"btn" %>
+</div>
