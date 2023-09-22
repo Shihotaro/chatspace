@@ -38,9 +38,6 @@
             <% end %>
           <% end %>
           <span class="like-count"><%= q.favorites.count %></span>
-          <% if session[:user_id] == 1 %>
-            <%= link_to "削除", question_path(q),data: { turbo_method: "delete", turbo_confirm: "本当に削除しますか？" }, class:"btn" %>
-          <% end %>
         </div>
       </div>
     </div>
