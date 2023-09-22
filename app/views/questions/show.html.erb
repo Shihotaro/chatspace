@@ -6,9 +6,10 @@
       <p class="card-subtitle mb-2 text-muted"><%= @question.name %></p>
       <p class="card-text"><%= simple_format(h(@question.content)) %></p>
       <% if @question.tags.exists?%>
-        <p>タグ：
+        <p>
+          <i class="fa-solid fa-tag"></i>
           <% @question.tags.each do |tag| %>
-            <%= tag.name %>
+            <%= link_to tag.name, questions_path(tag_search: tag.name) %>
           <% end %>
         </p>
       <% end %>

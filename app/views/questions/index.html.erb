@@ -18,10 +18,11 @@
         <h5 class="card-title"><%= q.title %></h5>
         <p class="card-subtitle mb-2 text-muted"><%= q.name %></p>
         <p class="card-text"><%= simple_format(h(q.content)) %></p>
-        <% if q.tags.exists?%>
-          <p>タグ：
+        <% if q.tags.exists? %>
+          <p>
+            <i class="fa-solid fa-tag"></i>
             <% q.tags.each do |tag| %>
-              <%= tag.name %>
+              <%= link_to tag.name, questions_path(tag_search: tag.name) %>
             <% end %>
           </p>
         <% end %>
