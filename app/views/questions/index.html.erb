@@ -6,6 +6,7 @@
 <div class="question-search-area">
   <form method="get" action="<%= questions_path %>">
     <input type="text" name="search" placeholder="キーワード検索" class="question-search-input">
+    <input type="text" name="tag_search" placeholder="タグ検索" class="question-search-input">
     <input type="submit" value="検索" class="search-button">
   </form>
 </div>
@@ -17,6 +18,14 @@
         <h5 class="card-title"><%= q.title %></h5>
         <p class="card-subtitle mb-2 text-muted"><%= q.name %></p>
         <p class="card-text"><%= simple_format(h(q.content)) %></p>
+        <% if q.tags.exists? %>
+          <p>
+            <i class="fa-solid fa-tag"></i>
+            <% q.tags.each do |tag| %>
+              <%= link_to tag.name, questions_path(tag_search: tag.name) %>
+            <% end %>
+          </p>
+        <% end %>
         <div class="question-select-bar">
           <%= link_to "詳細", question_path(q), class:"btn" %>
           <% if current_user && current_user.already_favorited?(q) %>
