@@ -17,4 +17,11 @@ class SessionController < ApplicationController
     session[:user_id] = nil
     redirect_to login_path
   end
+
+  def guest_login
+    user = User.find_by(email: 'guest@example.com')
+    session[:user_id] = user.id
+    redirect_to mypage_path
+    flash[:notice] = 'ゲストとしてログインしました'
+  end
 end
