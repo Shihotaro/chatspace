@@ -2,7 +2,8 @@ require 'rails_helper'
 
 RSpec.describe Question, type: :model do
   describe 'バリデーション' do
-    let(:sample_attributes) { { title: 'Sample Title', name: 'Sample Name', content: 'Sample Content' } }
+    let!(:user) { User.create(name: 'Sample User', email: 'user@sample.com', password: 'password') }
+    let(:sample_attributes) { { title: 'Sample Title', name: 'Sample Name', content: 'Sample Content', user_id: user.id } }
     let(:question) { Question.new(sample_attributes) }
 
     it '有効な値でバリデーションが通ること' do
