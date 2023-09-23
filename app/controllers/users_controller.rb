@@ -1,5 +1,10 @@
 class UsersController < ApplicationController
-  before_action :redirect_to_signin, only: %i[edit update]
+  before_action :redirect_to_signin, only: %i[show edit update]
+
+  def show
+    @questions = current_user.questions
+    @favorites = current_user.favorites.includes(question: :favorites)
+  end
 
   def new
     @user = User.new

@@ -22,10 +22,11 @@
     <div>
       <%= link_to "Q&A", questions_path, class: "btn" %>
       <% if session[:user_id].present? %>
-        <%= link_to "記録作成", new_record_path, class: "btn" %>
-        <%= link_to "登録内容の更新", edit_user_path, class: "btn"%>
+        <%= link_to "体調管理", records_path, class: "btn" %>
+        <%= link_to "マイページ", mypage_path, class: "btn" %>
         <%= link_to "ログアウト", logout_path, class: "btn" %>
       <% else %>
+        <%= link_to "ゲストログイン", guest_login_path, data: { "turbo-method": :post }, class: "btn" %>
         <%= link_to "ログイン", login_path, class: "btn"%>
         <%= link_to "会員登録", signup_path, class: "btn"%>
       <% end %>
