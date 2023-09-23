@@ -327,3 +327,18 @@ td {
 .my-acount-contents {
   margin: 0 0 50px 0;
 }
+
+.new-record-btn {
+  text-align: center;
+}
+
+.new-record-btn-text {
+  color: white;
+  background-color: #b5838d;
+}
+
+.new-record-btn-text:hover {
+  color: #b5838d;
+  background-color: white;
+  border-color: #b5838d;
+}
