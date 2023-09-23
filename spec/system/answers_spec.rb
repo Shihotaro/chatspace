@@ -1,7 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe 'Answers', type: :system do
-  let(:sample_question) { { title: 'Sample Title', name: 'Sample Name', content: 'Sample Content' } }
+  let(:valid_data) { { name: 'Sample User', email: 'user@sample.com', password: 'password' } }
+  let(:user) { User.create(valid_data) }
+  let(:sample_question) { { title: 'Sample Title', name: 'Sample Name', content: 'Sample Content', user_id: user.id } }
   let(:question) { Question.create(sample_question) }
 
   it '回答完了後、質問詳細画面に回答が表示されること' do
