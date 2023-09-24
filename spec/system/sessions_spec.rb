@@ -1,8 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Login', type: :system do
-  let(:valid_data) { { name: 'Sample User', email: 'user@sample.com', password: 'password' } }
-  let(:user) { User.create(valid_data) }
+  let(:user) { create(:user) }
 
   context '未ログインの場合' do
     it '[会員登録],[ログアウト]リンクを表示すること' do
@@ -27,22 +26,15 @@ RSpec.describe 'Login', type: :system do
 
   context 'ログイン後の場合' do
     it '[ログアウト]リンクを表示すること' do
-      visit login_path
-      expect(page).not_to have_link 'ログアウト'
-      fill_in 'email', with: user.email
-      fill_in 'password', with: user.password
-      click_on 'ログイン', class: 'login'
+      login(user)
 
       expect(page).to have_link 'ログアウト'
     end
 
-    it 'ブランドネームを押下後、Daily record一覧に遷移すること' do
-      visit login_path
-      fill_in 'email', with: user.email
-      fill_in 'password', with: user.password
-      click_on 'ログイン', class: 'login'
+    it 'ブランドネームを押下後、マイページに遷移すること' do
+      login(user)
 
-      expect(current_path).to eq(records_path)
+      expect(current_path).to eq(mypage_path)
       click_on 'みんなの広場', class: 'brand-name'
 
       expect(current_path).to eq(records_path)
