@@ -1,19 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe 'Records', type: :system do
-  let(:valid_data) { { name: 'Sample User', email: 'user@sample.com', password: 'password' } }
-  let(:user) { User.create(valid_data) }
+  let(:user) { create(:user) }
 
   it '新規投稿が完了した後、一覧画面に遷移すること' do
-    # ログイン画面からログイン
-    visit login_path
-    fill_in 'email', with: user.email
-    fill_in 'password', with: user.password
-    click_on 'ログイン', class: 'login'
+    login(user)
 
-    # record一覧画面からrecordの新規登録
+    click_on '体調管理'
+
     expect(current_path).to eq(records_path)
-    click_on '記録作成'
+    click_on '記入する'
 
     fill_in 'record[date]', with: '2023-09-01'
     fill_in 'record[body_temperature]', with: 36
