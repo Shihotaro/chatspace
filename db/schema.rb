@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_230_920_140_602) do
+ActiveRecord::Schema[7.0].define(version: 20_230_925_124_737) do
   create_table 'answers', force: :cascade do |t|
     t.string 'name'
     t.text 'content'
@@ -76,6 +76,7 @@ ActiveRecord::Schema[7.0].define(version: 20_230_920_140_602) do
     t.string 'password_digest'
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
+    t.boolean 'admin', default: false
   end
 
   add_foreign_key 'answers', 'questions'
