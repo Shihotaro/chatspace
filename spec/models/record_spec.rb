@@ -2,8 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Record, type: :mode do
   describe 'バリデーション' do
-    let(:valid_data) { { name: 'Sample User', email: 'user@sample.com', password: 'password' } }
-    let(:user) { User.create(valid_data) }
+    let(:user) { create(:user) }
     let(:sample_record) { { date: '2023-08-30', body_temperature: 36, weight: 45, body_fat_percentage: 15, condition: 2, memo: 'sample text', user_id: user.id } }
     let(:record) { Record.new(sample_record) }
 
