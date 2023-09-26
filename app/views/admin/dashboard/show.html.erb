@@ -1,0 +1,38 @@
+<div class="show-area">
+  <%= link_to '一覧に戻る',  admin_dashboard_path, class: "btn" %>
+  <div class="card mb-3, container" >
+    <div class="card-body">
+      <h5 class="card-title"><%= @question.title %></h5>
+      <p class="card-subtitle mb-2 text-muted"><%= @question.name %></p>
+      <p class="card-text"><%= simple_format(h(@question.content)) %></p>
+      <% if @question.tags.exists? %>
+        <p>
+          <i class="fa-solid fa-tag"></i>
+          <% @question.tags.each do |tag| %>
+            <%= tag.name%>
+          <% end %>
+        </p>
+      <% end %>
+      <div class="question-select-bar">
+        <i class="fas fa-heart" style="color: #b5838d;"></i>
+        <span class="like-count"><%= @question.favorites.count %></span>
+        <%= link_to "削除", question_path(@question), data: { turbo_method: "delete", turbo_confirm: "本当に削除しますか？" }, class:"btn" %>
+      </div>
+    </div>
+  </div>
+  <h2 class="coment-index">コメント一覧</h2>
+  <% if @question.answers.any? %>
+    <% @question.answers.each do |answer| %>
+      <div class="card mb-3, container" >
+        <div class="card-body">
+          <p class="card-subtitle mb-2 text-muted"><%= answer.name %></p>
+          <p class="card-text"><%= simple_format(h(answer.content)) %></p>
+          <p>回答日：<%= answer.created_at.strftime("%Y/%m/%d") %></p>
+          <%= link_to "このコメントを削除する", question_answer_path(@question, answer), data: { turbo_method: "delete", turbo_confirm: "本当に削除しますか？" }, class: "btn" %>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <div class="no-comment" >コメントが見つかりませんでした。</div>
+  <% end %>
+</div>

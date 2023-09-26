@@ -6,6 +6,10 @@ class Admin::DashboardController < ApplicationController
     @questions = Question.all
   end
 
+  def show
+    @question = Question.includes(:answers).find_by(id: params[:id])
+  end
+
   private
 
   def authorize_admin

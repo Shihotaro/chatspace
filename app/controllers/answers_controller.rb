@@ -9,7 +9,13 @@ class AnswersController < ApplicationController
     @question = Question.find(params[:question_id])
     @answer = @question.answers.find(params[:id])
     @answer.destroy
-    redirect_to @question
+    if current_user&.admin?
+      # 管理者用のリダイレクト先
+      redirect_to admin_path(@question)
+    else
+      # 通常ユーザーのリダイレクト先
+      redirect_to @question
+    end
   end
 
   private
