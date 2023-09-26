@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   root 'questions#index'
 
+  namespace :admin do
+    get 'dashboard', to: 'dashboard#index'
+  end
+
   resources :questions do
     resource :favorites, only: [:create, :destroy]
     resources :answers

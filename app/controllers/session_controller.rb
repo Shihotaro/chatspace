@@ -6,7 +6,11 @@ class SessionController < ApplicationController
     if user.present? && user.authenticate(params[:password])
       flash[:notice] = 'ログインしました'
       session[:user_id] = user.id
-      redirect_to mypage_path
+      if current_user&.admin?
+        redirect_to admin_dashboard_path
+      else
+        redirect_to mypage_path
+      end
     else
       flash.now[:alert] = 'ログインに失敗しました'
       render 'new'
