@@ -41,7 +41,6 @@ class QuestionsController < ApplicationController
       flash[:notice] = '質問を作成しました'
       redirect_to @question
     else
-      flash.now[:alert] = '質問の作成に失敗しました'
       render 'new'
     end
   end

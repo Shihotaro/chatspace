@@ -1,0 +1,12 @@
+ja:
+  activerecord:
+    errors:
+      messages:
+        blank: "を入力してください"
+        taken: "はすでに存在します"
+        too_short: "は%{count}文字以上で入力してください"
+    models:
+      question: 質問
+    attributes:
+      title: タイトル
+      content: 内容
