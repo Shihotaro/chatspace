@@ -50,7 +50,13 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
     @question.destroy
     flash[:notice] = '質問を削除しました'
-    redirect_back(fallback_location: root_path)
+    if current_user&.admin?
+      # 管理者用のリダイレクト先
+      redirect_to admin_dashboard_path
+    else
+      # 通常ユーザーのリダイレクト先
+      redirect_back(fallback_location: root_path)
+    end
   end
 
   private

@@ -19,11 +19,14 @@
       <%= link_to "みんなの広場", questions_path, class: "brand-name" %>
       <% end %>
     </div>
-    <div>
+    <div class="top-bar">
       <%= link_to "Q&A", questions_path, class: "btn" %>
       <% if session[:user_id].present? %>
         <%= link_to "体調管理", records_path, class: "btn" %>
         <%= link_to "マイページ", mypage_path, class: "btn" %>
+        <% if current_user&.admin? %>
+          <%= link_to "管理人ページ", admin_dashboard_path, class: "btn" %>
+        <% end %>
         <%= link_to "ログアウト", logout_path, class: "btn" %>
       <% else %>
         <%= link_to "ゲストログイン", guest_login_path, data: { "turbo-method": :post }, class: "btn" %>
