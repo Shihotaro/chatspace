@@ -1,12 +1,4 @@
-<% if @question.errors.any? %>
-  <div class="error-alert">
-    <ul>
-      <% @question.errors.full_messages.each do |message| %>
-        <li class='error-message'><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
+<%= render 'shared/error_messages', model: @question %>
 <h1>質問の新規作成</h1>
 <h2>気になることや不安なこと、なんでも聞いてみよう</h2>
 <div class="container question-input">
