@@ -17,7 +17,6 @@ class UsersController < ApplicationController
       flash[:notice] = '登録しました'
       redirect_to login_path
     else
-      flash.now[:alert] = '登録に失敗しました'
       render 'new'
     end
   end
@@ -33,7 +32,6 @@ class UsersController < ApplicationController
       flash[:notice] = '更新しました'
       redirect_to edit_user_path
     else
-      flash.now[:alert] = '更新に失敗しました'
       render 'edit'
     end
   end

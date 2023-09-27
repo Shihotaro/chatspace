@@ -1,15 +1,3 @@
+<%= render 'shared/error_messages', model: @user %>
 <h1>会員情報更新</h1>
-<%= form_with model: @user, url: user_path, method: "patch", class: "user-update", local: true, data: { turbo: false }  do |f| %>
-  <div class="form-group update-name">
-    <label>名前</label>
-    <%= f.text_field :name, class: "form-control", size: 50 %>
-  </div>
-  <div class="form-group update-email">
-    <label>メールアドレス</label>
-    <%= f.text_field :email, class: "form-control", size: 50 %>
-  </div>
-  <div>
-    <%= link_to "戻る", 'javascript:history.back()', class: "btn" %>
-    <%= f.submit "更新", class: "btn"%>
-  </div>
-<% end %>
+<%= render 'form', user: @user, form_url: user_path, form_method: :patch, form_class: "user-form", submit_label: "更新", password_fields: false %>
