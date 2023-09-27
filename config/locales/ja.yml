@@ -10,3 +10,10 @@ ja:
     attributes:
       title: タイトル
       content: 内容
+      record:
+        date: "日付"
+        body_temperature: "基礎体温"
+        weight: "体重"
+        body_fat_percentage: "体脂肪率"
+        condition: "気分"
+        memo: "日記・メモ"
