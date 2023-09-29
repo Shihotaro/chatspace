@@ -43,3 +43,12 @@
     </div>
   <% end %>
 </div>
+<h1>今日の天気</h1>
+<div class="weather-bar">
+  <% @weather_data.each do |weather| %>
+    <div class="weather-details">
+      <h3 class="weather-name"><%= weather[:name] %></h3>
+      <img src="https://openweathermap.org/img/wn/<%= weather[:icon] %>@2x.png" alt="Weather Icon" width="50">
+    </div>
+  <% end %>
+</div>

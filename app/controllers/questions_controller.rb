@@ -1,3 +1,7 @@
+require 'uri'
+require 'net/http'
+require 'json'
+
 class QuestionsController < ApplicationController
   def index
     if params[:tag_search].present?
@@ -7,6 +11,20 @@ class QuestionsController < ApplicationController
       @questions = Question.where('title LIKE ? OR content LIKE ?', "%#{params[:search]}%", "%#{params[:search]}%")
     else
       @questions = Question.includes(:tags).all
+    end
+
+    cities = ['Sapporo,jp', 'Sendai,jp', 'Tokyo,jp', 'Nagoya,jp', 'Osaka,jp', 'Fukuoka,jp', 'Naha,jp']
+    @weather_data = []
+
+    cities.each do |city|
+      uri = URI("https://api.openweathermap.org/data/2.5/weather?q=#{city}&APPID=0ceca44706ea610d53a5304f3f0f3288")
+      res = Net::HTTP.get_response(uri)
+      body = JSON.parse(res.body)
+      weather = {
+        name: body['name'],
+        icon: body.dig('weather', 0, 'icon')
+      }
+      @weather_data << weather
     end
   end
 
