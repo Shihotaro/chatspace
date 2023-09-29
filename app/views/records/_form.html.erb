@@ -1,3 +1,4 @@
+<%= render 'shared/error_messages', model: @record %>
 <h1>体調記録の<%= type %></h1>
 <%= form_with model: record, local: true,method: method, class: "record-form", data: { turbo: false } do |f| %>
   <div class="form-group record-input">

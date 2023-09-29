@@ -1,0 +1,26 @@
+ja:
+  activerecord:
+    errors:
+      messages:
+        blank: "を入力してください"
+        taken: "はすでに存在します"
+        too_short: "は%{count}文字以上で入力してください"
+        invalid: "が有効な値ではありません"
+        confirmation: "とパスワードが一致しません"
+    models:
+      question: 質問
+    attributes:
+      title: タイトル
+      content: 内容
+      record:
+        date: "日付"
+        body_temperature: "基礎体温"
+        weight: "体重"
+        body_fat_percentage: "体脂肪率"
+        condition: "気分"
+        memo: "日記・メモ"
+      user:
+        name: 名前
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード確認
