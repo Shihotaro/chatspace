@@ -346,3 +346,26 @@ td {
 .error-message {
   color: #e63946;
 }
+
+.weather-bar {
+  display: flex;
+  justify-content: center;
+}
+
+.weather-name {
+  text-align: center;
+  font-size: 15px;
+}
+.weather-details {
+  margin: 15px;
+}
+
+.back-to-top {
+  display: flex;
+  justify-content: center;
+  color: #b5838d;
+}
+
+.back-to-top:hover {
+  color: white;
+}
