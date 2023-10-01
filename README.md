@@ -18,9 +18,7 @@
 
 ## サンプルログイン
 
-体調管理ツールのログインには下記ご利用ください。  
-EMAIL: sample@email.com  
-PASS WORD: sample
+サイト画面、右上の「ゲストログイン」をご利用ください。
 
 ## 使用技術
 
@@ -38,7 +36,7 @@ PASS WORD: sample
 * Bootstrap '~> 5.0.2'
 * chartkick
 * Rspec '~> 6.0.0'
-* The FoodData Central API  
+* Weather API
 
 ## アプリケーション全体図
 
@@ -49,14 +47,16 @@ PASS WORD: sample
 * ユーザー登録・編集機能
 * ログイン機能
 * Q&A投稿機能
+   * 質問のお気に入り登録
+   * タグ機能
+   * 質問の検索
 * 体調管理
   * 新規投稿 
   * 投稿編集
   * 投稿削除
   * データのグラフ表示 (chartkick)
-* 栄養成分の検索機能 (The FoodData Central API)
+* 天気予報
 
 ## LICENCE
-
-U.S. DEPARTMENT OF AGRICULTURE  
-https://fdc.nal.usda.gov/api-guide.html
+OpenWeather
+https://openweathermap.org/
