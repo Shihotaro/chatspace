@@ -1,9 +1,8 @@
 # みんなの広場
 
-不妊治療に関わる交流サイトです。
-人には相談しづらいこと、話しづらいこと、なんでも言える場所です。
-簡易登録で体調管理ツールとしても利用できます。
-<br>
+不妊治療に関わる交流サイトです。<br>
+人には相談しづらいこと、話しづらいこと、なんでも言える場所です。<br>
+簡易登録で質問記事のお気に入り登録や毎日の体調を記録できる体調管理ツールとしても利用できます。<br>
 
 - 不妊治療に関わる Q&A ページ
   ![top-page](./images/top-page.png)
@@ -37,7 +36,7 @@
 - Bootstrap '~> 5.0.2'
 - chartkick
 - Rspec '~> 6.0.0'
-- The FoodData Central API
+- Weather API
 
 ## アプリケーション全体図
 
@@ -48,14 +47,17 @@
 - ユーザー登録・編集機能
 - ログイン機能
 - Q&A 投稿機能
+  - お気に入り登録
+  - タグ機能
+  - 質問検索機能
 - 体調管理
   - 新規投稿
   - 投稿編集
   - 投稿削除
   - データのグラフ表示 (chartkick)
-- 栄養成分の検索機能 (The FoodData Central API)
+- 天気予報の表示 (OpenWeather API)
 
 ## LICENCE
 
-U.S. DEPARTMENT OF AGRICULTURE
-https://fdc.nal.usda.gov/api-guide.html
+OpenWeather
+(https://openweathermap.org/api)
