@@ -78,10 +78,39 @@ td {
   width: 50%;
 }
 
+.question-search-area,
 .questions-area {
+  margin: 25px;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.question-search-input {
+  border: solid #b5838d;
+  border-radius: 10px;
+  width: 300px;
+  height: 40px;
+}
+
+.search-button {
+  color: white;
+  background-color: #b5838d;
+  border-color: white;
+  border: solid #b5838d;
+  border-radius: 10px;
+  width: 50px;
+  height: 40px;
+}
+
+.search-button:hover {
+  color: #b5838d;
+  background-color: white;
+  border-color: #b5838d;
+  border: solid white;
+  border-radius: 10px;
+  width: 50px;
+  height: 40px;
 }
 
 .card {
@@ -144,6 +173,7 @@ td {
 .question-title,
 .question-name,
 .question-content,
+.question-tag,
 .question-submit {
   display: flex;
   flex-direction: column;
@@ -188,15 +218,6 @@ td {
   margin: 10px;
 }
 
-.user-update,
-.update-name,
-.update-email {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 10px;
-}
-
 .brand-name,
 .brand-name:hover {
   text-decoration: none;
@@ -230,4 +251,121 @@ td {
 .back-button {
   display: flex;
   justify-content: center;
+}
+
+.non-like-button,
+.like-button {
+  text-decoration: none;
+  color: #6d6875;
+  margin: 5px;
+}
+
+.non-like-button:hover,
+.like-button:hover {
+  color: #b5838d;
+}
+
+.like-count {
+  color: #6d6875;
+  margin: 5px;
+}
+
+.question-select-bar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.question-detail-bottom {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.mypage-question-contents,
+.my-favorite-contents,
+.my-acount-contents {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border: 5px solid white;
+  border-radius: 10px;
+  padding: 5%;
+}
+
+.my-page-title {
+  font-weight: bold;
+}
+
+.my-questions-title,
+.my-favorite-title,
+.my-acount-title {
+  padding: 5%;
+}
+
+.my-question-count,
+.my-favorite-count {
+  font-size: 25px;
+}
+
+.my-question,
+.my-favorite-question {
+  text-decoration: none;
+  color: #355070;
+  font-weight: bold;
+}
+
+.my-acount-contents {
+  margin: 0 0 50px 0;
+}
+
+.new-record-btn {
+  text-align: center;
+}
+
+.new-record-btn-text {
+  color: white;
+  background-color: #b5838d;
+}
+
+.new-record-btn-text:hover {
+  color: #b5838d;
+  background-color: white;
+  border-color: #b5838d;
+}
+
+.fa-disply {
+  margin: 5px;
+}
+
+.no-comment {
+  text-align: center;
+  padding: 20px;
+}
+
+.error-message {
+  color: #e63946;
+}
+
+.weather-bar {
+  display: flex;
+  justify-content: center;
+}
+
+.weather-name {
+  text-align: center;
+  font-size: 15px;
+}
+.weather-details {
+  margin: 15px;
+}
+
+.back-to-top {
+  display: flex;
+  justify-content: center;
+  color: #b5838d;
+}
+
+.back-to-top:hover {
+  color: white;
 }

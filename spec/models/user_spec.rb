@@ -1,8 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  let(:valid_data) { { name: 'Sample User', email: 'user@sample.com', password: 'password' } }
-  let(:user) { User.new(valid_data) }
+  let(:user) { create(:user) }
 
   it '有効な値でバリデーションが通ること' do
     expect(user).to be_valid

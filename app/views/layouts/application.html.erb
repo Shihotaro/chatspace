@@ -8,39 +8,48 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <script src="https://kit.fontawesome.com/b0b54160e3.js" crossorigin="anonymous"></script>
   </head>
   <body>
-  <nav class="navbar navbar-light">
-    <div class="navbar-brand">
+    <nav class="navbar navbar-light">
+      <div class="navbar-brand">
+        <% if session[:user_id].present? %>
+          <%= link_to "みんなの広場", records_path, class: "brand-name" %>
+        <% else %>
+          <%= link_to "みんなの広場", questions_path, class: "brand-name" %>
+        <% end %>
+      </div>
+      <div class="top-bar">
+        <%= link_to "Q&A", questions_path, class: "btn" %>
+        <% if session[:user_id].present? %>
+          <%= link_to "体調管理", records_path, class: "btn" %>
+          <%= link_to "マイページ", mypage_path, class: "btn" %>
+          <% if current_user&.admin? %>
+            <%= link_to "管理人ページ", admin_dashboard_path, class: "btn" %>
+          <% end %>
+          <%= link_to "ログアウト", logout_path, class: "btn" %>
+        <% else %>
+          <%= link_to "ゲストログイン", guest_login_path, data: { "turbo-method": :post }, class: "btn" %>
+          <%= link_to "ログイン", login_path, class: "btn"%>
+          <%= link_to "会員登録", signup_path, class: "btn"%>
+        <% end %>
+      </div>
+    </nav>
+    <div class="container">
+      <% if flash[:notice] %>
+        <div class="alert alert-success" role="alert">
+          <%= flash[:notice] %>
+        </div>
+      <% end %>
+      <% if flash[:alert] %>
+        <div class="alert alert-danger" role="alert">
+          <%= flash[:alert] %>
+        </div>
+      <% end %>
+      <%= yield %>
       <% if session[:user_id].present? %>
-      <%= link_to "みんなの広場", records_path, class: "brand-name" %>
-      <% else %>
-      <%= link_to "みんなの広場", questions_path, class: "brand-name" %>
+        <%= link_to "↑ ページ上部に戻る", "#", class: "back-to-top" %>
       <% end %>
     </div>
-    <div>
-      <%= link_to "Q&A", questions_path, class: "btn" %>
-      <% if session[:user_id].present? %>
-        <%= link_to "記録作成", new_record_path, class: "btn" %>
-        <%= link_to "登録内容の更新", edit_user_path, class: "btn"%>
-        <%= link_to "ログアウト", logout_path, class: "btn" %>
-      <% else %>
-        <%= link_to "ログイン", login_path, class: "btn"%>
-        <%= link_to "会員登録", signup_path, class: "btn"%>
-      <% end %>
-    </div>
-  </nav>
-  <div class="container">
-    <% if flash[:notice] %>
-      <div class="alert alert-success" role="alert">
-        <%= flash[:notice] %>
-      </div>
-    <% end %>
-    <% if flash[:alert] %>
-      <div class="alert alert-danger" role="alert">
-        <%= flash[:alert] %>
-      </div>
-    <% end %>
-    <%= yield %>
   </body>
 </html>

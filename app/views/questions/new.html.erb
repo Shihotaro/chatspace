@@ -1,3 +1,4 @@
+<%= render 'shared/error_messages', model: @question %>
 <h1>質問の新規作成</h1>
 <h2>気になることや不安なこと、なんでも聞いてみよう</h2>
 <div class="container question-input">
@@ -13,6 +14,10 @@
     <div class="form-group question-content">
       <%= f.label :content %>
       <%= f.text_area :content, class:"form-control", size: "20x10" %>
+    </div>
+    <div class="form-group question-tag">
+      <%= label_tag :tag_names, 'Tag (「,」で区切ると複数登録できます)' %>
+      <%= text_field_tag :tag_names %>
     </div>
     <div class="question-submit">
       <%= link_to "戻る", 'javascript:history.back()', class: "btn" %>

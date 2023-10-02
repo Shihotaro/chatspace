@@ -1,5 +1,10 @@
 class UsersController < ApplicationController
-  before_action :redirect_to_signin, only: %i[edit update]
+  before_action :redirect_to_signin, only: %i[show edit update]
+
+  def show
+    @questions = current_user.questions
+    @favorites = current_user.favorites.includes(question: :favorites)
+  end
 
   def new
     @user = User.new
@@ -12,7 +17,6 @@ class UsersController < ApplicationController
       flash[:notice] = '登録しました'
       redirect_to login_path
     else
-      flash.now[:alert] = '登録に失敗しました'
       render 'new'
     end
   end
@@ -28,7 +32,6 @@ class UsersController < ApplicationController
       flash[:notice] = '更新しました'
       redirect_to edit_user_path
     else
-      flash.now[:alert] = '更新に失敗しました'
       render 'edit'
     end
   end

@@ -3,6 +3,13 @@
   治療のことやあなたの気持ち、聞きたいこと、話したいことなんでも話しましょう
 </h5>
 <h1>投稿広場</h1>
+<div class="question-search-area">
+  <form method="get" action="<%= questions_path %>">
+    <input type="text" name="search" placeholder="キーワード検索" class="question-search-input">
+    <input type="text" name="tag_search" placeholder="タグ検索" class="question-search-input">
+    <input type="submit" value="検索" class="search-button">
+  </form>
+</div>
 <div class="questions-area">
   <%= link_to '新規投稿する', new_question_path, class: "btn btn-success" %>
   <% @questions.each do |q| %>
@@ -11,40 +18,37 @@
         <h5 class="card-title"><%= q.title %></h5>
         <p class="card-subtitle mb-2 text-muted"><%= q.name %></p>
         <p class="card-text"><%= simple_format(h(q.content)) %></p>
-        <%= link_to "詳細", question_path(q), class:"btn" %>
-        <% if session[:user_id] == 1 %>
-          <%= link_to "削除", question_path(q),data: { turbo_method: "delete", turbo_confirm: "Are you sure?" }, class:"btn" %>
+        <% if q.tags.exists? %>
+          <p>
+            <i class="fa-solid fa-tag"></i>
+            <% q.tags.each do |tag| %>
+              <%= link_to tag.name, questions_path(tag_search: tag.name) %>
+            <% end %>
+          </p>
         <% end %>
+        <div class="question-select-bar">
+          <%= link_to "詳細", question_path(q), class:"btn" %>
+          <% if current_user && current_user.already_favorited?(q) %>
+            <%= link_to question_favorites_path(q), data: { "turbo-method": :delete }, class: "non-like-button" do %>
+              <i class="fa-regular fa-heart" style="color: #b5838d;"></i>
+            <% end %>
+          <% else %>
+            <%= link_to question_favorites_path(q), data: { "turbo-method": :post }, class: "like-button" do %>
+              <i class="fas fa-heart" style="color: #b5838d;"></i>
+            <% end %>
+          <% end %>
+          <span class="like-count"><%= q.favorites.count %></span>
+        </div>
       </div>
     </div>
   <% end %>
 </div>
-<div class="search-area">
-  <h1>栄養成分を調べる</h1>
-  <p>気になる食品の名前を英表記で入力してください。</p>
-  <p>※ 該当がない場合は、「該当データなし」が表示されます。</p>
-  <div class="search-field">
-    <%= form_with(url: questions_path, method: :get) do |form| %>
-      <%= form.text_field :search_word, placeholder: "英表記で入力してください 例) curry", size: "40" %>
-      <%= form.submit "検索", class:"btn" %>
-    <% end %>
-  </div>
-  <div class="search-results">
-    <% if  @foods.empty? %>
-      <p class="card-text no-date">該当データなし</p>
-    <% else %>
-      <% @foods.drop(1).take(5).each do |food| %>
-        <div>
-          <h5>品目: <%= food['description'] %></h5>
-          <p>主な栄養素:</p>
-          <% food_nutrients = food['foodNutrients'] %>
-          <ul>
-            <% food_nutrients.first(3).each do |nutrient| %>
-              <li><%= "#{nutrient['nutrientName']} #{nutrient['value']} #{nutrient['unitName']}" %></li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
-    <% end %>
-  </div>
+<h1>今日の天気</h1>
+<div class="weather-bar">
+  <% @weather_data.each do |weather| %>
+    <div class="weather-details">
+      <h3 class="weather-name"><%= weather[:name] %></h3>
+      <img src="https://openweathermap.org/img/wn/<%= weather[:icon] %>@2x.png" alt="Weather Icon" width="50">
+    </div>
+  <% end %>
 </div>

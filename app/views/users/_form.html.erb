@@ -1,0 +1,24 @@
+<%= form_with model: user, url: form_url, method: form_method, class: form_class, local: true, data: { turbo: false } do |f| %>
+  <div class="form-group user-name">
+    <label>名前</label>
+    <%= f.text_field :name, class: "form-control", size: 50 %>
+  </div>
+  <div class="form-group user-email">
+    <label>メールアドレス</label>
+    <%= f.text_field :email, class: "form-control", size: 50 %>
+  </div>
+  <% if local_assigns.has_key?(:password_fields) && password_fields %>
+    <div class="form-group user-password">
+      <label>パスワード</label>
+      <%= f.password_field :password, class: "form-control", size: 50 %>
+    </div>
+    <div class="form-group user-password-confirmation">
+      <label>パスワード確認用</label>
+      <%= f.password_field :password_confirmation, class: "form-control", size: 50 %>
+    </div>
+  <% end %>
+  <div>
+    <%= link_to "戻る", 'javascript:history.back()', class: "btn" %>
+    <%= f.submit submit_label, class: "btn" %>
+  </div>
+<% end %>

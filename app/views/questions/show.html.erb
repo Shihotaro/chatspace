@@ -5,11 +5,31 @@
       <h5 class="card-title"><%= @question.title %></h5>
       <p class="card-subtitle mb-2 text-muted"><%= @question.name %></p>
       <p class="card-text"><%= simple_format(h(@question.content)) %></p>
-      <p>投稿日：<%= @question.created_at.strftime("%Y/%m/%d") %></p>
+      <% if @question.tags.exists?%>
+        <p>
+          <i class="fa-solid fa-tag"></i>
+          <% @question.tags.each do |tag| %>
+            <%= link_to tag.name, questions_path(tag_search: tag.name) %>
+          <% end %>
+        </p>
+      <% end %>
+      <div class="question-detail-bottom">
+        <% if current_user && current_user.already_favorited?(@question)%>
+          <%= link_to question_favorites_path(@question), data: { "turbo-method": :delete }, class: "non-like-button" do %>
+            <i class="fa-regular fa-heart" style="color: #b5838d;"></i>
+          <% end %>
+        <% else %>
+          <%= link_to question_favorites_path(@question), data: { "turbo-method": :post }, class: "like-button" do %>
+            <i class="fas fa-heart" style="color: #b5838d;"></i>
+          <% end %>
+        <% end %>
+        <span class="like-count"><%= @question.favorites.count %></span>
+        <span>投稿日：<%= @question.created_at.strftime("%Y/%m/%d") %></span>
+      </div>
     </div>
   </div>
   <h2 class="coment-title">コメントする</h2>
-    <h5>
+  <h5>
     <ul>
       <li>あなたが言われて傷つくことは禁止です</li>
       <li>Q&A以外の内容は禁止です</li>
@@ -24,7 +44,6 @@
       <div class="form-group coment-input">
         <%= form.label :content %>
         <%= form.text_area :content, class:"form-control", rows: 7 %>
-        
       </div>
       <div class="coment-button">
         <%= form.submit "投稿", class: "btn" %>
@@ -34,17 +53,13 @@
   <h2 class="coment-index">コメント一覧</h2>
   <% @question.answers.each do |answer| %>
     <% if answer.name.present? && answer.content.present? %>
-    <div class="card mb-3, container" >
-    <div class="card-body">
-      <p class="card-subtitle mb-2 text-muted"><%= answer.name %></p>
-      <p class="card-text"><%= simple_format(h(answer.content)) %></p>
-      <p>回答日：<%= answer.created_at.strftime("%Y/%m/%d") %></p>
-      <% if session[:user_id] == 1 %>
-        <%= link_to "削除", [answer.question, answer],
-        data: { turbo_method: "delete", turbo_confirm: "Are you sure?" }, class:"btn" %>
-      <% end %>
-    </div>
-    </div>
+      <div class="card mb-3, container" >
+        <div class="card-body">
+          <p class="card-subtitle mb-2 text-muted"><%= answer.name %></p>
+          <p class="card-text"><%= simple_format(h(answer.content)) %></p>
+          <p>回答日：<%= answer.created_at.strftime("%Y/%m/%d") %></p>
+        </div>
+      </div>
     <% end %>
   <% end %>
   <%= link_to '一覧に戻る', questions_path, class: "btn" %>

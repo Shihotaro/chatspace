@@ -1,0 +1,42 @@
+<h1 class="my-page-title"><%= current_user.name %>さんのマイページ</h1>
+<h2 class="my-questions-title">投稿した質問</h2>
+<div class="container mypage-question-contents">
+  <p class="my-question-count"><%= @questions.count %>件</p>
+  <% @questions.each do |question| %>
+    <div class="card-body">
+      <h3><%= link_to question.title, question_path(question), class: "my-question" %></h3>
+      <p class="card-text">
+        <%= simple_format(h(question.content)) %>
+      </p>
+      <%= link_to "削除", question_path(question), data: { turbo_method: "delete", turbo_confirm: "本当に削除しますか？" }, class:"btn" %>
+    </div>
+  <% end %>
+</div>
+<h2 class="my-favorite-title">お気に入り一覧</h2>
+<div class="my-favorite-contents">
+  <p class="my-favorite-count"><%= @favorites.count %>件</p>
+  <% @favorites.each do |favorite| %>
+    <div class="card-body ">
+      <h3><%= link_to favorite.question.title, question_path(favorite.question), class: "my-favorite-question" %></h3>
+      <p class="card-text">
+        <%= simple_format(h(favorite.question.content)) %>
+      </p>
+      <%= link_to question_favorites_path(favorite.question), data: { "turbo-method": :delete }, class: "non-like-button" do %>
+        <i class="fa-regular fa-heart" style="color: #b5838d;"></i>
+      <% end %>
+      <span class="like-count">
+        <%= favorite.question.favorites.count %>
+      </span>
+    </div>
+  <% end %>
+</div>
+<h2 class="my-acount-title">登録情報の編集</h2>
+<div class="my-acount-contents">
+  <% if current_user.name == "guest_login" && current_user.email == "guest@example.com"%>
+    <p>ゲストユーザーは編集できません</p>
+  <% else %>
+    <p>名前：<%= current_user.name %></p>
+    <p>メールアドレス：<%= secret_email(current_user.email) %></p>
+    <%= link_to "編集", edit_user_path, class:"btn" %>
+  <% end %>
+</div>

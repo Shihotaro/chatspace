@@ -6,10 +6,10 @@
 <br>
 
 - 不妊治療に関わる Q&A ページ
-  ![overall-image](./images/top-page.png)
+  ![top-page](./images/top-page.png)
 
 - 体調管理ページ
-  ![overall-image](./images/records-top.png)
+  ![records-top](./images/records-top.png)
 
 ## 作成背景
 

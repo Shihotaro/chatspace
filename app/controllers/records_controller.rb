@@ -29,8 +29,7 @@ class RecordsController < ApplicationController
       flash[:notice] = '保存しました'
       redirect_to records_path
     else
-      flash.now[:alert] = '記録の保存に失敗しました'
-      render :new
+      render 'new'
     end
   end
 
@@ -45,7 +44,6 @@ class RecordsController < ApplicationController
       flash[:notice] = '記録を更新しました'
       redirect_to records_path
     else
-      flash.now[:alert] = '記録の更新に失敗しました'
       render 'edit'
     end
   end

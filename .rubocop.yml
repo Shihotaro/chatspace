@@ -27,9 +27,15 @@ Metrics/PerceivedComplexity:
 Layout/LineLength:
   Enabled: false
   Exclude:
-    - "bin/bundle" 
+    - "bin/bundle"
 
 Metrics/AbcSize:
   Enabled: false
   Exclude:
-    - "app/controllers/records_controller.rb" 
+    - "app/controllers/records_controller.rb"
+
+Style/SymbolArray:
+  Enabled: false
+
+Style/WordArray:
+  Enabled: false
