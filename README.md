@@ -40,7 +40,7 @@
 
 ## アプリケーション全体図
 
-<img src="https://github.com/Shihotaro/chatspace/assets/123743578/2e339d48-74f3-496c-9f1d-7b020e1e5a97" width="1000">
+![アプリケーション全体図](images/overall view.png)
 
 ## 機能一覧
 
